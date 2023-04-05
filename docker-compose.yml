@@ -1,0 +1,6 @@
+version: '1'
+
+services:
+  bot:
+    image: discord.py:minimal
+    
