@@ -18,6 +18,8 @@ class Bot(commands.Bot):
 
     async def on_ready(self):
         print(f"{self.user.name} connected!")
+
+        # Load commands
         await self.load_extension("commands.basic")
 
         # TODO: Do this for a specific guild or multiples
