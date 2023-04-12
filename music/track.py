@@ -8,7 +8,7 @@ import yt_dlp
 import youtube_dl
 
 
-class ISource(FFmpegPCMAudio):
+class ITrack(FFmpegPCMAudio):
     def __init__(self, input):
         super().__init__(self.get_source(input))
 
@@ -30,7 +30,7 @@ class ISource(FFmpegPCMAudio):
         pass
 
 
-class YoutubeSource(ISource):
+class YoutubeTrack(ITrack):
     ydl_opts = {
         'format': 'bestaudio/best',
         'extract_audio': True,
@@ -45,6 +45,7 @@ class YoutubeSource(ISource):
         'default_search': 'auto',
         # bind to ipv4 since ipv6 addresses cause issues sometimes
         'source_address': '0.0.0.0',
+        'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5'
     }
 
     def get_source(self, input) -> FFmpegPCMAudio:
@@ -55,6 +56,7 @@ class YoutubeSource(ISource):
             if 'entries' in data:
                 data = data['entries'][0]
 
+            # Save track data
             self.url = data["url"]
             self.title = data["title"]
             self.duration = data["duration"]
