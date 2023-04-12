@@ -3,6 +3,4 @@ version: '1'
 services:
   bot:
     build: .
-    volumes:
-      - ./:/app
 

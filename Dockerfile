@@ -7,5 +7,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["sleep", "infinity"]
-# CMD ["python", "bot.py"]
+CMD ["python", "bot.py"]
