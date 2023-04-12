@@ -45,6 +45,13 @@ class GuildMusicManager():
         self.current_track = None
         self.play_next()
         
+    def can_skip(self):
+        return False if self.queue.is_empty() else True
+    
+    def skip(self):
+        next = self.queue.get_next()
+        self.voice_client.stop()
+        return next
         
         
         

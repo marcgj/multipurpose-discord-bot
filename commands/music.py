@@ -53,6 +53,23 @@ class Music(commands.Cog):
         # Send what will be reproduced
         await interaction.followup.send(f"Playing {track.title}")
 
+    @app_commands.command(name="skip",
+                          description="Skip the current song")
+    async def skip(self, interaction: discord.Interaction):
+        # Check if the bot is connected
+        if not interaction.guild.voice_client:
+            return
+
+        # Check if there is a song to skip to
+        if not self.music_manager.can_skip():
+            await interaction.response.send_message("No song to skip to")
+            return
+
+        # Skip and keep the next song
+        next_song = self.music_manager.skip()
+
+        await interaction.response.send_message(f"Skipping to next song: {next_song.title}")
+
 
 async def setup(bot: commands.Bot):
     # TODO: Automate guilds like in bot.py
