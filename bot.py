@@ -3,9 +3,6 @@ from discord.ext import commands
 
 import os
 
-# Import commands outside this file
-from commands.basic import Basic
-
 # Load environs from .env file
 from dotenv import load_dotenv
 load_dotenv()
@@ -21,6 +18,7 @@ class Bot(commands.Bot):
 
         # Load commands
         await self.load_extension("commands.basic")
+        await self.load_extension("commands.music")
 
         # TODO: Do this for a specific guild or multiples
         await bot.tree.sync(guild=discord.Object(id=1050483093988970636))
