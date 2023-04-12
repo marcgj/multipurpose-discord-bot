@@ -1,11 +1,10 @@
-# This file will contain an interface for a source and for the moment its implementations
+# This file will contain an interface for a source and for the implementations
 
 
 # Import discord audio processors
-from discord import FFmpegOpusAudio, PCMVolumeTransformer, FFmpegPCMAudio
+from discord import FFmpegPCMAudio
 
 import yt_dlp
-import youtube_dl
 
 
 class ITrack(FFmpegPCMAudio):
