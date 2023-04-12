@@ -33,6 +33,7 @@ class ISource(FFmpegPCMAudio):
 class YoutubeSource(ISource):
     ydl_opts = {
         'format': 'bestaudio/best',
+        'extract_audio': True,
         'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
         'restrictfilenames': True,
         'noplaylist': True,
