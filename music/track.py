@@ -2,14 +2,15 @@
 
 
 # Import discord audio processors
-from discord import FFmpegPCMAudio
+from discord import FFmpegPCMAudio, PCMVolumeTransformer
 
 import yt_dlp
 
 
-class ITrack(FFmpegPCMAudio):
+class ITrack(PCMVolumeTransformer):
     def __init__(self, input):
-        super().__init__(self.get_source(input))
+        source = FFmpegPCMAudio(self.get_source(input))
+        super().__init__(source, volume=0.3)
 
     # Url of the track
     url = None
