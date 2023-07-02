@@ -30,6 +30,5 @@ jobs:
             cd ~/multipurpose-discord-bot
             git pull origin master
             echo "API_KEY = /"${{secrets.DISCORD_API}}/"" > .env
-            docker compose up            
+            systemctl restart discordbot.service         
 
-            
