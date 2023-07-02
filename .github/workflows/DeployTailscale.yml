@@ -31,3 +31,5 @@ jobs:
             git pull origin master
             echo "API_KEY = /"${{secrets.DISCORD_API}}/"" > .env
             docker compose up            
+
+            
